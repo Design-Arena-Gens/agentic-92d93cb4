@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Semantic color tokens (HSL) */
+  --primary: 358 100% 67%;        /* #FF5A5F */
+  --secondary: 358 100% 97%;      /* light tint of primary */
+  --accent: 358 90% 55%;          /* emphasized variant */
+  --background: 0 0% 100%;        /* white */
+  --surface: 0 0% 98%;            /* subtle raised surfaces */
+  --neutral: 0 0% 10%;            /* primary text */
+}
+
+* { outline-color: hsl(var(--primary)); }
+
+html, body {
+  height: 100%;
+}
+
+body {
+  @apply bg-background text-neutral antialiased;
+  font-family: var(--font-inter), system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, 'Helvetica Neue', Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
+}
+
+/* Utility for safe area spacing on mobile */
+.safe-bottom { padding-bottom: max(12px, env(safe-area-inset-bottom)); }
+.safe-top { padding-top: max(12px, env(safe-area-inset-top)); }
+.safe-x { padding-left: max(12px, env(safe-area-inset-left)); padding-right: max(12px, env(safe-area-inset-right)); }
+
+/******** Components ********/
+.btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-3 text-sm font-medium transition-colors active:scale-[0.99];
+}
+.btn-primary { @apply bg-primary text-background shadow-soft hover:opacity-95; }
+.btn-ghost { @apply bg-transparent text-neutral hover:bg-surface; }
+.btn-outline { @apply border border-[color:hsl(var(--neutral)/0.15)] text-neutral bg-background hover:bg-surface; }
+
+.card { @apply rounded-lg bg-surface shadow-soft border border-[color:hsl(var(--neutral)/0.08)]; }
+.badge { @apply inline-flex items-center rounded-full px-3 py-1 text-xs bg-secondary text-neutral/80 border border-[color:hsl(var(--neutral)/0.06)]; }
+.input { @apply w-full rounded-md bg-surface border border-[color:hsl(var(--neutral)/0.12)] px-4 py-3 text-sm placeholder:text-neutral/40 focus:border-[color:hsl(var(--primary))] focus:outline-none; }
+.tabbar { @apply grid grid-cols-3 bg-surface rounded-md p-1 border border-[color:hsl(var(--neutral)/0.08)]; }
+.tab { @apply text-sm py-2 rounded-md text-neutral/60 hover:text-neutral; }
+.tab-active { @apply bg-background text-neutral shadow-inset; }
+
+/* Subtle gradient helpers */
+.gradient-hero {
+  background-image: radial-gradient(1200px 400px at 50% -200px, hsl(var(--secondary)) 0%, transparent 60%);
+}
+
+/* Icon sizing */
+.icon { width: 20px; height: 20px; }
+.icon-lg { width: 24px; height: 24px; }
